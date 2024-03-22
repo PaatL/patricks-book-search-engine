@@ -1,4 +1,4 @@
-const { User, bookSchema } = require("../models");
+const { User, Book } = require("../models");
 
 const { signToken, AuthenticationError } = require("../utils/auth");
 
@@ -43,7 +43,7 @@ const resolvers = {
           {$push: {savedBooks: args}},
           {runValidators: true, new: true }
           );
-        return {userData};
+        return userData;
       }
       throw AuthenticationError;
     },
