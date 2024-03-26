@@ -8,6 +8,8 @@ import {
 } from 'react-bootstrap';
 
 import { getMe, deleteBook } from '../utils/API';
+import { REMOVE_BOOK } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
@@ -17,6 +19,7 @@ const SavedBooks = () => {
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
+  const [removeBook] = useMutation(REMOVE_BOOK) ;
   useEffect(() => {
     const getUserData = async () => {
       try {
